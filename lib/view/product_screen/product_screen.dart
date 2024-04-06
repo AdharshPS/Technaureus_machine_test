@@ -27,6 +27,8 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     var productProvider = Provider.of<ProductController>(context);
+    var functionProvider =
+        Provider.of<ProductController>(context, listen: false);
 
     return Scaffold(
         appBar: AppBar(
@@ -93,6 +95,9 @@ class _ProductScreenState extends State<ProductScreen> {
                         ],
                       ),
                     ),
+                    onChanged: (value) {
+                      functionProvider.searchProduct(value);
+                    },
                   )),
               productProvider.productModel.data?.length != 0
                   ? Padding(

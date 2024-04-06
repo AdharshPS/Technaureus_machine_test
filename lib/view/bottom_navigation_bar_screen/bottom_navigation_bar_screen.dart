@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:technaureus_project/utils/app_colors.dart';
 import 'package:technaureus_project/view/cart_screen/cart_screen.dart';
 import 'package:technaureus_project/view/customer_screen/customer_screen.dart';
 import 'package:technaureus_project/view/home_screen/home_screen.dart';
@@ -29,6 +30,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: screenNumber,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primaryColor,
         onTap: (value) {
           screenNumber = value;
           setState(() {});
