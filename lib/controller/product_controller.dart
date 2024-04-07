@@ -61,4 +61,58 @@ class ProductController with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  List<int> productIdList = [];
+  List<int> quantityList = [];
+  List<int> productPriceList = [];
+  orderProduct({
+    required int productId,
+    required int quantity,
+    required int productPrice,
+  }) async {
+    productIdList.add(productId);
+    quantityList.add(quantity);
+    productPriceList.add(productPrice);
+    try {
+      var url = Uri.parse('$baseUrl/api/orders/');
+      int totalPrice = 0;
+      for (var i = 0; i < productIdList.length; i++) {
+        int totalQuantity = 0;
+        int totalProductPrice = 0;
+        for (var i = 0; i < quantityList.length; i++) {
+          totalQuantity += quantityList[i];
+        }
+        for (var i = 0; i < productPriceList.length; i++) {
+          totalProductPrice += productIdList[i];
+        }
+        totalPrice = totalQuantity * totalProductPrice;
+      }
+      var body = {
+        "customer_id": "2",
+        "total_price": totalPrice.toString(),
+        "products": [
+          for (int i = 0; i < productIdList.length; i++)
+            {
+              {
+                "product_id": productIdList[i],
+                "quantity": quantityList[i],
+                "price": productPriceList[i]
+              },
+            }
+        ],
+      };
+      var response = await http.post(url, body: body);
+      if (response.statusCode == 200) {
+        await productView();
+        print(response.statusCode);
+        print(response.body);
+      } else {
+        print(response.statusCode);
+        print(response.body);
+      }
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
+  }
 }

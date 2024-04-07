@@ -223,10 +223,19 @@ class _ContainerWidgetState extends State<ContainerWidget> {
                     flex: 40,
                     child: itemCount == 0
                         ? InkWell(
-                            onTap: () {
+                            onTap: () async {
                               print(widget.index);
-                              functionProvider.addProduct(itemCount);
+                              await functionProvider.addProduct(itemCount);
                               itemCount = productProvider.count;
+                              await functionProvider.orderProduct(
+                                productId: productProvider
+                                        .productModel.data?[widget.index].id ??
+                                    0,
+                                quantity: itemCount,
+                                productPrice: productProvider.productModel
+                                        .data?[widget.index].price ??
+                                    0,
+                              );
                             },
                             child: Container(
                               decoration: BoxDecoration(

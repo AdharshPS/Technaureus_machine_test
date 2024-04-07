@@ -40,13 +40,13 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         iconSize: 24,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: "New Order"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.post_add_rounded), label: "New Order"),
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: "Cart"),
           BottomNavigationBarItem(
-              icon: FaIcon(Icons.add), label: "Return Order"),
-          BottomNavigationBarItem(
-              icon: FaIcon(Icons.groups), label: "Customers"),
+              icon: Icon(Icons.keyboard_return), label: "Return Order"),
+          BottomNavigationBarItem(icon: Icon(Icons.groups), label: "Customers"),
         ],
       ),
       body: screens[screenNumber],

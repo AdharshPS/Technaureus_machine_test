@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:technaureus_project/utils/app_colors.dart';
 import 'package:technaureus_project/view/customer_screen/customer_screen.dart';
 import 'package:technaureus_project/view/product_screen/product_screen.dart';
@@ -19,17 +20,17 @@ class _HomeScreenState extends State<HomeScreen> {
     },
     {
       'title': 'Products',
-      'icon': Icon(Icons.groups),
+      'icon': FaIcon(FontAwesomeIcons.box),
       'page': ProductScreen(),
     },
     {
       'title': 'New Order',
-      'icon': Icon(Icons.groups),
+      'icon': Icon(Icons.post_add_rounded),
       'page': ProductScreen(),
     },
     {
       'title': 'Return Order',
-      'icon': Icon(Icons.groups),
+      'icon': Icon(Icons.keyboard_return),
       'page': ProductScreen(),
     },
     // {
